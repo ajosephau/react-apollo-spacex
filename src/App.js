@@ -19,7 +19,7 @@ const createApolloClient = () => {
   
   const GET_LAUNCHES = gql`
       query getLaunches {
-        launches(limit: 10, order: "launch_year") {
+        launches(order: "launch_year") {
           id
           mission_name
           upcoming
