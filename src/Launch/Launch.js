@@ -4,7 +4,6 @@ import TableCell from '@material-ui/core/TableCell';
 import Checkbox from '@material-ui/core/Checkbox';
 
 const Launch = ({ index, launch }) => {
-  debugger;
   return (
       <TableRow key={index}>
         <TableCell component="th" scope="row">

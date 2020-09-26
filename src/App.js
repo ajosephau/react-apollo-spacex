@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import LaunchWrapper from "./Launch/LaunchWrapper";
 
-import { ApolloClient, ApolloProvider, InMemoryCache, HttpLink, useQuery, gql } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache, HttpLink } from '@apollo/client';
 
 const createApolloClient = () => {
   return new ApolloClient({
@@ -17,31 +17,6 @@ const createApolloClient = () => {
     });
   };
   
-  const GET_LAUNCHES = gql`
-      query getLaunches {
-        launches(order: "launch_year") {
-          id
-          mission_name
-          upcoming
-          launch_year
-          launch_success
-          }
-      }
-  `;
-  
-  const LaunchesQuery = () => {
-    const { loading, error, data } = useQuery(GET_LAUNCHES);
-    
-      if (loading) {
-        return <div>Loading...</div>;
-      }
-      if (error) {
-        console.error(error);
-        return <div>Error!</div>;
-      }
-      return <LaunchesQuery launches={data.launches} />;
-    };
-
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -49,7 +24,7 @@ function Copyright() {
       {new Date().getFullYear()}
       {' '}
       <Link color="inherit" href="https://assignar.com/">
-        Anthony Joseph 👷 for Assignar!
+        Anthony Joseph <span role="img" aria-label="construction-worker">👷</span> for Assignar!
       </Link>{' '}
       {'.'}
     </Typography>
