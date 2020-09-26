@@ -5,7 +5,6 @@ import LaunchList from "./LaunchList";
 const LaunchWrapper = () => {
   return (
     <div className="launchWrapper">
-      <div className="sectionHeader">Launches</div>
       <LaunchList />
     </div>
   );

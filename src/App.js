@@ -2,9 +2,8 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
-import BasicTable from './table';
 import LaunchWrapper from "./Launch/LaunchWrapper";
 
 import { ApolloClient, ApolloProvider, InMemoryCache, HttpLink, useQuery, gql } from '@apollo/client';
@@ -20,7 +19,7 @@ const createApolloClient = () => {
   
   const GET_LAUNCHES = gql`
       query getLaunches {
-          launches(limit: 10) {
+        launches(limit: 10, order: "launch_year") {
           id
           mission_name
           upcoming
@@ -31,7 +30,6 @@ const createApolloClient = () => {
   `;
   
   const LaunchesQuery = () => {
-    const client = createApolloClient();
     const { loading, error, data } = useQuery(GET_LAUNCHES);
     
       if (loading) {
@@ -48,10 +46,10 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://assignar.com/">
-        Assignar 🎉!
-      </Link>{' '}
       {new Date().getFullYear()}
+      <Link color="inherit" href="https://assignar.com/">
+        Anthony Joseph 👷 for Assignar!
+      </Link>{' '}
       {'.'}
     </Typography>
   );
@@ -65,10 +63,8 @@ export default function App() {
     <Container maxWidth="sm">
       <Box my={5}>
         <Typography variant="h4" component="h1" gutterBottom>
-          Create React App v4-beta example
+          SpaceX Launches
         </Typography>
-        <Button variant="contained">Default</Button>
-        <BasicTable />
         <LaunchWrapper />
         <Copyright />
       </Box>
