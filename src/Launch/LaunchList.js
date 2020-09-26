@@ -14,13 +14,13 @@ import Launch from "./Launch";
 const LAUNCHES = gql`
 query launches {
   launches(sort: "launch_year") {
-      id
-      mission_name
-      upcoming
-      launch_year
-      launch_success
-    }
+    id
+    mission_name
+    upcoming
+    launch_year
+    launch_success
   }
+}
 `;
 
 const useStyles = makeStyles({
@@ -44,8 +44,9 @@ const LaunchList = props => {
           <TableRow>
             <TableCell>Mission name</TableCell>
             <TableCell align="right">Year</TableCell>
+            <TableCell align="right">Time</TableCell>
             <TableCell align="right">Upcoming launch?</TableCell>
-            <TableCell align="right">Launch success?</TableCell>
+            <TableCell align="right">Launch success?</TableCell>            
           </TableRow>
         </TableHead>
         <TableBody>
