@@ -5,6 +5,8 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import BasicTable from './table';
+import LaunchWrapper from "./Launch/LaunchWrapper";
+
 import { ApolloClient, ApolloProvider, InMemoryCache, HttpLink, useQuery, gql } from '@apollo/client';
 
 const createApolloClient = () => {
@@ -29,7 +31,8 @@ const createApolloClient = () => {
   `;
   
   const LaunchesQuery = () => {
-      const { loading, error, data } = useQuery(GET_LAUNCHES);
+    const client = createApolloClient();
+    const { loading, error, data } = useQuery(GET_LAUNCHES);
     
       if (loading) {
         return <div>Loading...</div>;
@@ -40,6 +43,7 @@ const createApolloClient = () => {
       }
       return <LaunchesQuery launches={data.launches} />;
     };
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -55,7 +59,6 @@ function Copyright() {
 
 export default function App() {
   const client = createApolloClient();
-  debugger;
 
   return (
     <ApolloProvider client={client}>
@@ -66,6 +69,7 @@ export default function App() {
         </Typography>
         <Button variant="contained">Default</Button>
         <BasicTable />
+        <LaunchWrapper />
         <Copyright />
       </Box>
     </Container>

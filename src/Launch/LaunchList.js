@@ -16,28 +16,24 @@ query launches {
 `;
 
 const LaunchList = props => {
-  const [state, setState] = useState({
-    filter: "all",
-    clearInProgress: false
-  });
-
   const { launches } = props;
-
+  const launchList = [];
+  launches.forEach((launch, index) => {
+    launchList.push(<Launch key={index} index={index} launch={launch} />);
+  });
+  debugger;
   return (
     <Fragment>
-      <div className="todoListWrapper">
-        <ul>{todoList}</ul>
+      <div className="launchListWrapper">
+        <ul>{launchList}</ul>
       </div>
-
-      <TodoFilters
-        todos={filteredTodos}
-      />
     </Fragment>
   );
 };
 
-const TodoPrivateListQuery = () => {
-  const { loading, error, data } = useQuery(GET_MY_TODOS);
+
+const LaunchListQuery = () => {
+  const { loading, error, data } = useQuery(LAUNCHES);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -46,7 +42,7 @@ const TodoPrivateListQuery = () => {
     console.error(error);
     return <div>Error!</div>;
   }
-  return <TodoPrivateList todos={data.todos} />;
+  return <LaunchList launches={data.launches} />;
 };
-export default TodoPrivateListQuery;
-export { GET_MY_TODOS };
+export default LaunchListQuery;
+export { LAUNCHES };
