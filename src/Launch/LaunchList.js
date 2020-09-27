@@ -44,7 +44,6 @@ const LaunchList = props => {
           <TableRow>
             <TableCell>Mission name</TableCell>
             <TableCell align="right">Year</TableCell>
-            <TableCell align="right">Time</TableCell>
             <TableCell align="right">Upcoming launch?</TableCell>
             <TableCell align="right">Launch success?</TableCell>            
           </TableRow>
