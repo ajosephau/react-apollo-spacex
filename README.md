@@ -18,6 +18,6 @@ npm run deploy
 
 ## The idea behind the example
 
-This example demonstrates how you can use [Create React App](https://github.com/facebookincubator/create-react-app).
+This example is based on the [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Based on [the example](https://github.com/mui-org/material-ui).
