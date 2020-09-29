@@ -108,3 +108,4 @@ build/
 
 # MacOS random files
 .DS_Store
+/.idea/
